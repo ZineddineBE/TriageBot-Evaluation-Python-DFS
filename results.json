@@ -7,10 +7,10 @@
     },
     "analysis": {
       "category": "bug",
-      "severity": 5,
+      "severity": 4,
       "sentiment": "negative",
-      "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
-      "draft": "Désolé de savoir que vous avez perdu du temps, DragonSlayer42. Veuillez nous contacter si vous poursuivez à rencontrer ce problème.",
+      "summary": "Le jeu crash lors de l’ouverture de l’inventaire au niveau 3",
+      "draft": "D’accord, je vous aide étant donné que vous avez perdu de la progression. Pouvez-vous me donner plus de détails sur les erreurs qui apparaissent avant le crash ?",
       "status": "processed",
       "escalation": "Traitement standard"
     }
@@ -25,8 +25,8 @@
       "category": "suggestion",
       "severity": 1,
       "sentiment": "positive",
-      "summary": "Demande de pizza végétiennes pour les elfes",
-      "draft": "Bonjour PizzaQueen, merci de partager ton idée ! Nous allons prendre en compte ta suggestion et voir ce que nous pouvons faire pour y arriver.",
+      "summary": "Suggestion pour ajouter des pizzas végétiennes pour les elfes",
+      "draft": "C’est une idée amusante ! Nous pourrions explorer cette idée et voir si elle convient aux elfes.",
       "status": "processed",
       "escalation": "Traitement standard"
     }
@@ -39,12 +39,12 @@
     },
     "analysis": {
       "category": "payment",
-      "severity": 4,
+      "severity": 3,
       "sentiment": "negative",
-      "summary": "Débit erroné pour pack premium",
-      "draft": "Bonjour xX_Kevin_Xx, je suis désolé de vous informer que nous avons détecté un débit incorrect pour le pack premium. Je vais vous remboursé dans les plus brefs délais. Veuillez patienter un peu plus. Merci de votre compréhension.",
+      "summary": "Débit excessif pour le pack premium",
+      "draft": "Bonjour xX_Kevin_Xx, nous vous remercions de nous avoir informé de ce problème. Votre compte sera examiné immédiatement et vous serez remboursé dans les prochains jours. Merci de votre compréhension.",
       "status": "processed",
-      "escalation": "À transmettre au responsable support"
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -71,10 +71,10 @@
     },
     "analysis": {
       "category": "payment",
-      "severity": 3,
+      "severity": 1,
       "sentiment": "negative",
-      "summary": "ProblÃ¨me d’inconnu avec l’authentification",
-      "draft": "Bonjour HansM￾r, nous sommes dÃsolÃs d’entendre que vous rencontrez des problÃ¨mes d’authentification. Voudriez-vous fournir plus de dÃtais sur le problÃ¨me pour nous aider Ã  vous aider ?",
+      "summary": "Problème d'invention de mot de passe",
+      "draft": "Bonjour HansMüller, nous sommes désolés d'entendre que vous rencontrez des difficultés avec l'invention de votre mot de passe. Voudriez-vous essayer de réinitialiser votre mot de passe ?",
       "status": "processed",
       "escalation": "Traitement standard"
     }
@@ -89,8 +89,8 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Ignorance du joueur",
-      "draft": "Nous nous excusons pour la frustration cause et vous proposons un remboursement de 1000â€. Vú pouvez vous écrire Î une nouvelle requîte pour obtenir plus d'informations sur les étapes suivantes.",
+      "summary": "Ignoration des instructions et demande de remboursement",
+      "draft": "Troll9000, nous sommes désolés de voir que vous n'êtes pas satisfait de nos instructions. Veuillez nous contacter pour que nous puissions vous aider de manière appropriée.",
       "status": "processed",
       "escalation": "À transmettre à l'équipe modération"
     }
@@ -105,8 +105,8 @@
       "category": "suggestion",
       "severity": 1,
       "sentiment": "positive",
-      "summary": "Demande de tutoriel sur l'interface de livraison",
-      "draft": "Bonjour GrandmaGamer, nous sommes ravis que votre petit-fils ait installé le jeu pour vous ! Nous allons prendre soin de vous aider avec un tutoriel sur l'interface de livraison pour que vous puissiez délivrer la pizza avec facilité. Rejoignez notre canal de communication pour plus d'informations !",
+      "summary": "Problème de navigation dans le jeu",
+      "draft": "Bonjour GrandmaGamer, merci de nous avoir contactés ! Il semblerait que le jeu manque d’indication sur la livraison de la pizza. Nous allons prendre en compte votre suggestion pour améliorer l’expérience de jeu.",
       "status": "processed",
       "escalation": "Traitement standard"
     }
@@ -119,10 +119,10 @@
     },
     "analysis": {
       "category": "bug",
-      "severity": 5,
+      "severity": 4,
       "sentiment": "negative",
-      "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
-      "draft": "Désolé de savoir que vous avez perdu du temps, DragonSlayer42. Veuillez nous contacter si vous poursuivez à rencontrer ce problème.",
+      "summary": "Le jeu crash lors de l’ouverture de l’inventaire au niveau 3",
+      "draft": "D’accord, je vous aide étant donné que vous avez perdu de la progression. Pouvez-vous me donner plus de détails sur les erreurs qui apparaissent avant le crash ?",
       "status": "duplicate",
       "escalation": "Traitement standard"
     }
@@ -137,8 +137,8 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Joueur qui utilise des insultes pour critiquer le jeu et les développeurs",
-      "draft": "Merci de rester poli dans vos messages. Si vous avez des problèmes, nous sommes là pour vous aider.",
+      "summary": "Joueur insulte les développeurs",
+      "draft": "Nous sommes désolés que vous ayez cette expérience. Votre compte a été désinstallé pour raisons de sécurité. Nous sommes désolés de ne pas avoir pu vous offrir une expérience de jeu plus agréable.",
       "status": "processed",
       "escalation": "À transmettre à l'équipe modération"
     }
@@ -152,9 +152,9 @@
     "analysis": {
       "category": "bug",
       "severity": 2,
-      "sentiment": "positive",
-      "summary": "Le joueur peut traverser le mur du boss final en sautant contre le coin gauche.",
-      "draft": "C\\u00e9casse, on peut peut-être ajouter des animations de dégâts ou des effets visuels pour rendre cette « tricherie » moins amusante, mais ce n'est pas grave et ne perturbe pas le jeu.",
+      "sentiment": "negative",
+      "summary": "Problème de collision avec le mur du boss final",
+      "draft": "Nous allons vérifier cela rapidement et nous ferons des ajustements si nécessaire pour éviter de créer des exploits.",
       "status": "processed",
       "escalation": "Traitement standard"
     }
