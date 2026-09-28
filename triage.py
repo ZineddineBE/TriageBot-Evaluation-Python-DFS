@@ -87,6 +87,21 @@ def analyze_ticket(ticket: dict) -> dict:
   }
 
 
+def get_escalation(analysis: dict) -> str:
+  """Règles d'escalade déterministes sans LLM."""
+  status = analysis.get("status")
+  category = analysis.get("category")
+  severity = analysis.get("severity", 0)
+
+  if status == "to_check":
+    return "Relecture humaine obligatoire"
+  if category == "toxicity":
+    return "À transmettre à l'équipe modération"
+  if category == "payment" and severity >= 4:
+    return "À transmettre au responsable support"
+  return "Traitement standard"
+
+
 def show_dashboard(results: list) -> None:
   print("\n--- TABLEAU DE BORD ---")
   active = [r for r in results if r["analysis"]["status"] in ("processed", "to_check", "duplicate")]
@@ -140,7 +155,8 @@ def main():
           "sentiment": "neutral",
           "summary": "Message vide",
           "draft": "",
-          "status": "ignored"
+          "status": "ignored",
+          "escalation": "Traitement standard"
         }
       })
       continue
@@ -155,7 +171,9 @@ def main():
 
     print(f"Ticket #{ticket['id']} en cours ({player})...")
     analysis = analyze_ticket(ticket)
+    analysis["escalation"] = get_escalation(analysis)
     seen[key] = analysis
+
     results.append({"ticket": ticket, "analysis": analysis})
 
   with open(output_path, "w", encoding="utf-8") as f:

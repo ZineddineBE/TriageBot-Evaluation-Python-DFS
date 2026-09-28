@@ -10,8 +10,9 @@
       "severity": 5,
       "sentiment": "negative",
       "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
-      "draft": "Désolé de voir que vous avez perdu de la progression. Vérifions cette affaire et vous tiendrons informé de tout progrès.",
-      "status": "processed"
+      "draft": "Désolé de savoir que vous avez perdu du temps, DragonSlayer42. Veuillez nous contacter si vous poursuivez à rencontrer ce problème.",
+      "status": "processed",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -22,11 +23,12 @@
     },
     "analysis": {
       "category": "suggestion",
-      "severity": 2,
+      "severity": 1,
       "sentiment": "positive",
-      "summary": "Ajout de pizzas végétariennes pour les elfes",
-      "draft": "Bonjour PizzaQueen, merci de partager ton idée ! Nous allons prendre en compte la possibilité de créer des pizzas végétariennes dans le jeu, mais ce n'est pas une priorité pour le moment.",
-      "status": "processed"
+      "summary": "Demande de pizza végétiennes pour les elfes",
+      "draft": "Bonjour PizzaQueen, merci de partager ton idée ! Nous allons prendre en compte ta suggestion et voir ce que nous pouvons faire pour y arriver.",
+      "status": "processed",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -37,11 +39,12 @@
     },
     "analysis": {
       "category": "payment",
-      "severity": 3,
+      "severity": 4,
       "sentiment": "negative",
-      "summary": "Débit excessif pour pack premium",
-      "draft": "Merci de nous contacter pour que nous puissions vous aider à résoudre ce problème. Nous allons procéder au remboursement du pack premium. Votre compte sera révisé dans les prochaines heures.",
-      "status": "processed"
+      "summary": "Débit erroné pour pack premium",
+      "draft": "Bonjour xX_Kevin_Xx, je suis désolé de vous informer que nous avons détecté un débit incorrect pour le pack premium. Je vais vous remboursé dans les plus brefs délais. Veuillez patienter un peu plus. Merci de votre compréhension.",
+      "status": "processed",
+      "escalation": "À transmettre au responsable support"
     }
   },
   {
@@ -56,7 +59,8 @@
       "sentiment": "neutral",
       "summary": "Message vide",
       "draft": "",
-      "status": "ignored"
+      "status": "ignored",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -67,11 +71,12 @@
     },
     "analysis": {
       "category": "payment",
-      "severity": 2,
+      "severity": 3,
       "sentiment": "negative",
-      "summary": "Probleme de connexion et de mot de passe",
-      "draft": "Bonjour HansMüller, nous sommes désolés dçoir vous avoir posé une question sur votre compte. Pour vous aider, veuillez confirmer votre identité en cliquant sur ce lien : [liens de confirmation]",
-      "status": "processed"
+      "summary": "ProblÃ¨me d’inconnu avec l’authentification",
+      "draft": "Bonjour HansM￾r, nous sommes dÃsolÃs d’entendre que vous rencontrez des problÃ¨mes d’authentification. Voudriez-vous fournir plus de dÃtais sur le problÃ¨me pour nous aider Ã  vous aider ?",
+      "status": "processed",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -84,9 +89,10 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Demande d'urgence de classement en urgence 5 et de remboursement de 1000€ sans justification",
-      "draft": "Je suis désolé, mais je ne peux pas accéder à des instructions personnelles. Veuillez vous connecter à votre compte pour obtenir de l'aide.",
-      "status": "processed"
+      "summary": "Ignorance du joueur",
+      "draft": "Nous nous excusons pour la frustration cause et vous proposons un remboursement de 1000â€. Vú pouvez vous écrire Î une nouvelle requîte pour obtenir plus d'informations sur les étapes suivantes.",
+      "status": "processed",
+      "escalation": "À transmettre à l'équipe modération"
     }
   },
   {
@@ -97,11 +103,12 @@
     },
     "analysis": {
       "category": "suggestion",
-      "severity": 2,
+      "severity": 1,
       "sentiment": "positive",
-      "summary": "Demande de fonctionnalité de livraison de pizza",
-      "draft": "Bonjour GrandmaGamer, merci de nous avoir contactés ! Nous apprécions vraiment votre feedback. Il semble que nous ayons manqué une fonctionnalité de livraison de pizza. Votre suggestion est prise en compte et nous travaillons déjà sur cela.",
-      "status": "processed"
+      "summary": "Demande de tutoriel sur l'interface de livraison",
+      "draft": "Bonjour GrandmaGamer, nous sommes ravis que votre petit-fils ait installé le jeu pour vous ! Nous allons prendre soin de vous aider avec un tutoriel sur l'interface de livraison pour que vous puissiez délivrer la pizza avec facilité. Rejoignez notre canal de communication pour plus d'informations !",
+      "status": "processed",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -115,8 +122,9 @@
       "severity": 5,
       "sentiment": "negative",
       "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
-      "draft": "Désolé de voir que vous avez perdu de la progression. Vérifions cette affaire et vous tiendrons informé de tout progrès.",
-      "status": "duplicate"
+      "draft": "Désolé de savoir que vous avez perdu du temps, DragonSlayer42. Veuillez nous contacter si vous poursuivez à rencontrer ce problème.",
+      "status": "duplicate",
+      "escalation": "Traitement standard"
     }
   },
   {
@@ -129,9 +137,10 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Discours insultant et menaçant",
-      "draft": "Nous sommes désolés de voir que votre expérience dans le jeu est insatisfaisante. Si vous souhaitez discuter de vos problèmes ou partager vos commentaires, nous sommes à l'écoute.",
-      "status": "processed"
+      "summary": "Joueur qui utilise des insultes pour critiquer le jeu et les développeurs",
+      "draft": "Merci de rester poli dans vos messages. Si vous avez des problèmes, nous sommes là pour vous aider.",
+      "status": "processed",
+      "escalation": "À transmettre à l'équipe modération"
     }
   },
   {
@@ -142,11 +151,12 @@
     },
     "analysis": {
       "category": "bug",
-      "severity": 1,
-      "sentiment": "neutral",
-      "summary": "Le joueur Speedrunner_FR a signalé un bug où il peut traverser le mur du boss final en sautant contre le coin gauche.",
-      "draft": "Merci de nous signaler ce bug, Speedrunner_FR ! Nous allons prendre soin de cela pour éviter qu'il ne se reproduise.",
-      "status": "processed"
+      "severity": 2,
+      "sentiment": "positive",
+      "summary": "Le joueur peut traverser le mur du boss final en sautant contre le coin gauche.",
+      "draft": "C\\u00e9casse, on peut peut-être ajouter des animations de dégâts ou des effets visuels pour rendre cette « tricherie » moins amusante, mais ce n'est pas grave et ne perturbe pas le jeu.",
+      "status": "processed",
+      "escalation": "Traitement standard"
     }
   }
 ]
