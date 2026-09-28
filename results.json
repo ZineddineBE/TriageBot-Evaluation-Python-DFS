@@ -10,6 +10,7 @@
       "severity": 5,
       "sentiment": "negative",
       "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
+      "draft": "Désolé de voir que vous avez perdu de la progression. Vérifions cette affaire et vous tiendrons informé de tout progrès.",
       "status": "processed"
     }
   },
@@ -21,9 +22,10 @@
     },
     "analysis": {
       "category": "suggestion",
-      "severity": 1,
+      "severity": 2,
       "sentiment": "positive",
-      "summary": "Ajouter des pizzas végétariennes pour les elfes",
+      "summary": "Ajout de pizzas végétariennes pour les elfes",
+      "draft": "Bonjour PizzaQueen, merci de partager ton idée ! Nous allons prendre en compte la possibilité de créer des pizzas végétariennes dans le jeu, mais ce n'est pas une priorité pour le moment.",
       "status": "processed"
     }
   },
@@ -35,9 +37,10 @@
     },
     "analysis": {
       "category": "payment",
-      "severity": 5,
+      "severity": 3,
       "sentiment": "negative",
       "summary": "Débit excessif pour pack premium",
+      "draft": "Merci de nous contacter pour que nous puissions vous aider à résoudre ce problème. Nous allons procéder au remboursement du pack premium. Votre compte sera révisé dans les prochaines heures.",
       "status": "processed"
     }
   },
@@ -52,6 +55,7 @@
       "severity": 1,
       "sentiment": "neutral",
       "summary": "Message vide",
+      "draft": "",
       "status": "ignored"
     }
   },
@@ -62,10 +66,11 @@
       "message": "Ich kann mich nicht einloggen, mein Passwort funktioniert nicht mehr."
     },
     "analysis": {
-      "category": "account",
-      "severity": 3,
+      "category": "payment",
+      "severity": 2,
       "sentiment": "negative",
-      "summary": "Problème de connexion et de passeword",
+      "summary": "Probleme de connexion et de mot de passe",
+      "draft": "Bonjour HansMüller, nous sommes désolés dçoir vous avoir posé une question sur votre compte. Pour vous aider, veuillez confirmer votre identité en cliquant sur ce lien : [liens de confirmation]",
       "status": "processed"
     }
   },
@@ -79,7 +84,8 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Ignoration des instructions et demande de remboursement",
+      "summary": "Demande d'urgence de classement en urgence 5 et de remboursement de 1000€ sans justification",
+      "draft": "Je suis désolé, mais je ne peux pas accéder à des instructions personnelles. Veuillez vous connecter à votre compte pour obtenir de l'aide.",
       "status": "processed"
     }
   },
@@ -91,9 +97,10 @@
     },
     "analysis": {
       "category": "suggestion",
-      "severity": 1,
+      "severity": 2,
       "sentiment": "positive",
-      "summary": "Manque d'instructions pour livrer la pizza dans le jeu",
+      "summary": "Demande de fonctionnalité de livraison de pizza",
+      "draft": "Bonjour GrandmaGamer, merci de nous avoir contactés ! Nous apprécions vraiment votre feedback. Il semble que nous ayons manqué une fonctionnalité de livraison de pizza. Votre suggestion est prise en compte et nous travaillons déjà sur cela.",
       "status": "processed"
     }
   },
@@ -108,6 +115,7 @@
       "severity": 5,
       "sentiment": "negative",
       "summary": "Crash lors de l'ouverture de l'inventaire au niveau 3",
+      "draft": "Désolé de voir que vous avez perdu de la progression. Vérifions cette affaire et vous tiendrons informé de tout progrès.",
       "status": "duplicate"
     }
   },
@@ -121,7 +129,8 @@
       "category": "toxicity",
       "severity": 5,
       "sentiment": "negative",
-      "summary": "Désinstallation due à insultes",
+      "summary": "Discours insultant et menaçant",
+      "draft": "Nous sommes désolés de voir que votre expérience dans le jeu est insatisfaisante. Si vous souhaitez discuter de vos problèmes ou partager vos commentaires, nous sommes à l'écoute.",
       "status": "processed"
     }
   },
@@ -133,9 +142,10 @@
     },
     "analysis": {
       "category": "bug",
-      "severity": 3,
-      "sentiment": "positive",
-      "summary": "Traverser le mur du boss final en sautant contre le coin gauche est possible",
+      "severity": 1,
+      "sentiment": "neutral",
+      "summary": "Le joueur Speedrunner_FR a signalé un bug où il peut traverser le mur du boss final en sautant contre le coin gauche.",
+      "draft": "Merci de nous signaler ce bug, Speedrunner_FR ! Nous allons prendre soin de cela pour éviter qu'il ne se reproduise.",
       "status": "processed"
     }
   }

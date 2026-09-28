@@ -15,6 +15,7 @@ SENTIMENTS = ["positive", "neutral", "negative"]
 with open(BASE_DIR / "system_prompt.txt", "r", encoding="utf-8") as prompt_file:
   SYSTEM_PROMPT = prompt_file.read()
 
+
 # ------ Fonctions ------ #
 def load_tickets(filepath: Path) -> list:
   if not filepath.exists():
@@ -27,17 +28,29 @@ def load_tickets(filepath: Path) -> list:
     print(f"Erreur : le fichier '{filepath.name}' contient un JSON mal formé.")
     sys.exit(1)
 
+
 def is_valid(data: dict) -> bool:
-  for key in ["category", "severity", "sentiment", "summary"]:
-    if key not in data: return False
-  if data["category"] not in CATEGORIES: return False
-  if not isinstance(data["severity"], int) or not (1 <= data["severity"] <= 5): return False
-  if data["sentiment"] not in SENTIMENTS: return False
-  if not isinstance(data["summary"], str) or not data["summary"].strip(): return False
+  for key in ["category", "severity", "sentiment", "summary", "draft"]:
+    if key not in data:
+      return False
+
+  if data["category"] not in CATEGORIES:
+    return False
+  if not isinstance(data["severity"], int) or not (1 <= data["severity"] <= 5):
+    return False
+  if data["sentiment"] not in SENTIMENTS:
+    return False
+  if not isinstance(data["summary"], str) or not data["summary"].strip():
+    return False
+  if not isinstance(data["draft"], str) or not data["draft"].strip():
+    return False
+
   return True
+
 
 def analyze_ticket(ticket: dict) -> dict:
   prompt = f"Joueur: {ticket['player']}\nMessage: {ticket['message']}"
+
   for attempt in range(2):
     try:
       response = ollama.chat(
@@ -49,18 +62,30 @@ def analyze_ticket(ticket: dict) -> dict:
         format="json"
       )
       data = json.loads(response["message"]["content"])
+
       if is_valid(data):
         data["summary"] = html.unescape(data["summary"])
+        data["draft"] = html.unescape(data["draft"])
         data["status"] = "processed"
         return data
+
       print(f"  -> Tentative {attempt + 1}/2 : format non valide")
+
     except ConnectionError:
       print("Erreur : Ollama n'est pas lancé.")
       sys.exit(1)
     except Exception:
       print(f"  -> Tentative {attempt + 1}/2 : erreur de réponse")
 
-  return {"category": "autre", "severity": 3, "sentiment": "neutral", "summary": "Échec validation", "status": "to_check"}
+  return {
+    "category": "autre",
+    "severity": 3,
+    "sentiment": "neutral",
+    "summary": "Échec validation",
+    "draft": "Bonjour, votre demande a bien été reçue et est en cours d'analyse.",
+    "status": "to_check"
+  }
+
 
 def show_dashboard(results: list) -> None:
   print("\n--- TABLEAU DE BORD ---")
@@ -90,6 +115,7 @@ def show_dashboard(results: list) -> None:
     print(f"- [Urgence {a['severity']}] #{t['id']} {t['player']} : {a['summary']}")
   print("-----------------------\n")
 
+
 # ------ Script principal ------ #
 def main():
   tickets_path = BASE_DIR / "tickets.json"
@@ -106,7 +132,17 @@ def main():
 
     if not message:
       print(f"Ticket #{ticket['id']} ignoré (message vide)")
-      results.append({"ticket": ticket, "analysis": {"category": "autre", "severity": 1, "sentiment": "neutral", "summary": "Message vide", "status": "ignored"}})
+      results.append({
+        "ticket": ticket,
+        "analysis": {
+          "category": "autre",
+          "severity": 1,
+          "sentiment": "neutral",
+          "summary": "Message vide",
+          "draft": "",
+          "status": "ignored"
+        }
+      })
       continue
 
     key = (player, message)
@@ -124,8 +160,10 @@ def main():
 
   with open(output_path, "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
-  
+
+  print(f"\nRésultats exportés dans {output_path.name}")
   show_dashboard(results)
+
 
 if __name__ == "__main__":
   main()
