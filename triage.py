@@ -62,13 +62,41 @@ def analyze_ticket(ticket: dict) -> dict:
 
   return {"category": "autre", "severity": 3, "sentiment": "neutral", "summary": "Échec validation", "status": "to_check"}
 
+def show_dashboard(results: list) -> None:
+  print("\n--- TABLEAU DE BORD ---")
+  active = [r for r in results if r["analysis"]["status"] in ("processed", "to_check", "duplicate")]
+  if not active:
+    print("Aucun ticket exploitable.")
+    return
+
+  counts = {}
+  for item in active:
+    cat = item["analysis"]["category"]
+    counts[cat] = counts.get(cat, 0) + 1
+
+  print("\nTickets par catégorie :")
+  for cat, total in sorted(counts.items()):
+    print(f"- {cat} : {total}")
+
+  severities = [item["analysis"]["severity"] for item in active]
+  avg = sum(severities) / len(severities)
+  print(f"\nUrgence moyenne : {avg:.1f} / 5")
+
+  sorted_tickets = sorted(active, key=lambda x: x["analysis"]["severity"], reverse=True)
+  print("\nTop 3 des urgences :")
+  for item in sorted_tickets[:3]:
+    t = item["ticket"]
+    a = item["analysis"]
+    print(f"- [Urgence {a['severity']}] #{t['id']} {t['player']} : {a['summary']}")
+  print("-----------------------\n")
+
 # ------ Script principal ------ #
 def main():
   tickets_path = BASE_DIR / "tickets.json"
   output_path = BASE_DIR / "results.json"
   tickets = load_tickets(tickets_path)
   results = []
-  seen = {}  # Pour dédoublonner
+  seen = {}
 
   print(f"Démarrage du triage ({MODEL})...\n")
 
@@ -76,16 +104,11 @@ def main():
     player = ticket.get("player", "").strip()
     message = ticket.get("message", "").strip()
 
-    # Règle 1 : ignorer les messages vides
     if not message:
       print(f"Ticket #{ticket['id']} ignoré (message vide)")
-      results.append({
-        "ticket": ticket,
-        "analysis": {"category": "autre", "severity": 1, "sentiment": "neutral", "summary": "Message vide", "status": "ignored"}
-      })
+      results.append({"ticket": ticket, "analysis": {"category": "autre", "severity": 1, "sentiment": "neutral", "summary": "Message vide", "status": "ignored"}})
       continue
 
-    # Règle 2 : détecter les doublons
     key = (player, message)
     if key in seen:
       print(f"Ticket #{ticket['id']} doublon détecté pour {player}")
@@ -97,11 +120,12 @@ def main():
     print(f"Ticket #{ticket['id']} en cours ({player})...")
     analysis = analyze_ticket(ticket)
     seen[key] = analysis
-
     results.append({"ticket": ticket, "analysis": analysis})
 
   with open(output_path, "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
+  
+  show_dashboard(results)
 
 if __name__ == "__main__":
   main()
