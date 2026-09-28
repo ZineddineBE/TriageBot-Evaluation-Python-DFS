@@ -29,16 +29,11 @@ def load_tickets(filepath: Path) -> list:
 
 def is_valid(data: dict) -> bool:
   for key in ["category", "severity", "sentiment", "summary"]:
-    if key not in data:
-      return False
-  if data["category"] not in CATEGORIES:
-    return False
-  if not isinstance(data["severity"], int) or not (1 <= data["severity"] <= 5):
-    return False
-  if data["sentiment"] not in SENTIMENTS:
-    return False
-  if not isinstance(data["summary"], str) or not data["summary"].strip():
-    return False
+    if key not in data: return False
+  if data["category"] not in CATEGORIES: return False
+  if not isinstance(data["severity"], int) or not (1 <= data["severity"] <= 5): return False
+  if data["sentiment"] not in SENTIMENTS: return False
+  if not isinstance(data["summary"], str) or not data["summary"].strip(): return False
   return True
 
 def analyze_ticket(ticket: dict) -> dict:
@@ -65,10 +60,7 @@ def analyze_ticket(ticket: dict) -> dict:
     except Exception:
       print(f"  -> Tentative {attempt + 1}/2 : erreur de réponse")
 
-  return {
-    "category": "autre", "severity": 3, "sentiment": "neutral", 
-    "summary": "Échec validation", "status": "to_check"
-  }
+  return {"category": "autre", "severity": 3, "sentiment": "neutral", "summary": "Échec validation", "status": "to_check"}
 
 # ------ Script principal ------ #
 def main():
@@ -76,11 +68,36 @@ def main():
   output_path = BASE_DIR / "results.json"
   tickets = load_tickets(tickets_path)
   results = []
+  seen = {}  # Pour dédoublonner
 
   print(f"Démarrage du triage ({MODEL})...\n")
+
   for ticket in tickets:
-    print(f"Ticket #{ticket['id']} en cours...")
+    player = ticket.get("player", "").strip()
+    message = ticket.get("message", "").strip()
+
+    # Règle 1 : ignorer les messages vides
+    if not message:
+      print(f"Ticket #{ticket['id']} ignoré (message vide)")
+      results.append({
+        "ticket": ticket,
+        "analysis": {"category": "autre", "severity": 1, "sentiment": "neutral", "summary": "Message vide", "status": "ignored"}
+      })
+      continue
+
+    # Règle 2 : détecter les doublons
+    key = (player, message)
+    if key in seen:
+      print(f"Ticket #{ticket['id']} doublon détecté pour {player}")
+      cached = dict(seen[key])
+      cached["status"] = "duplicate"
+      results.append({"ticket": ticket, "analysis": cached})
+      continue
+
+    print(f"Ticket #{ticket['id']} en cours ({player})...")
     analysis = analyze_ticket(ticket)
+    seen[key] = analysis
+
     results.append({"ticket": ticket, "analysis": analysis})
 
   with open(output_path, "w", encoding="utf-8") as f:
