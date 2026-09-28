@@ -3,12 +3,12 @@
 ## 1. Synthèse chiffrée
 
 - **Total des tickets analysés** : 9
-- **Urgence moyenne** : 2.9 / 5
+- **Urgence moyenne** : 3.3 / 5
 
 ### Répartition par catégorie
 
-- **bug** : 3
-- **payment** : 2
+- **bug** : 4
+- **payment** : 1
 - **suggestion** : 2
 - **toxicity** : 2
 
