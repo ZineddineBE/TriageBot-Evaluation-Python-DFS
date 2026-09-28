@@ -80,4 +80,4 @@ python triage.py
   - Catégorie `payment` avec urgence $\ge 4$ $\rightarrow$ Responsable support
   - Statut `to_check` $\rightarrow$ Relecture humaine obligatoire
   - Autres tickets $\rightarrow$ Traitement standard
-- **Rapport de synthèse (`report.md`)** : génération automatique d'un document récapitulatif pour les managers non techniques.
+- **Rapport de synthèse (`report.md`)** : génération automatique d'un document récapitulatif pour les managers non techniques. 
