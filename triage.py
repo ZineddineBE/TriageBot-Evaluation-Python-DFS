@@ -102,6 +102,51 @@ def get_escalation(analysis: dict) -> str:
   return "Traitement standard"
 
 
+def generate_report(results: list, filepath: Path) -> None:
+  """Génère le rapport Markdown de synthèse."""
+  active = [r for r in results if r["analysis"]["status"] in ("processed", "to_check", "duplicate")]
+
+  total = len(active)
+  avg = sum(r["analysis"]["severity"] for r in active) / total if total else 0
+  counts = {}
+  for r in active:
+    c = r["analysis"]["category"]
+    counts[c] = counts.get(c, 0) + 1
+
+  lines = [
+    "# Rapport de synthèse — Support Dungeon Delivery\n",
+    "## 1. Synthèse chiffrée\n",
+    f"- **Total des tickets analysés** : {total}",
+    f"- **Urgence moyenne** : {avg:.1f} / 5\n",
+    "### Répartition par catégorie\n"
+  ]
+
+  for cat, count in sorted(counts.items()):
+    lines.append(f"- **{cat}** : {count}")
+
+  lines.append("\n## 2. Tickets à escalader\n")
+  lines.append("| ID | Joueur | Catégorie | Urgence | Action requise |")
+  lines.append("|---|---|---|---|---|")
+
+  escalated = [r for r in results if r["analysis"].get("escalation") != "Traitement standard"]
+  for r in escalated:
+    t = r["ticket"]
+    a = r["analysis"]
+    lines.append(f"| #{t['id']} | {t['player']} | {a['category']} | {a['severity']} | {a['escalation']} |")
+
+  lines.append("\n## 3. Tickets à vérifier (anomalies / retries)\n")
+  to_check = [r for r in results if r["analysis"].get("status") == "to_check"]
+  if to_check:
+    for r in to_check:
+      t = r["ticket"]
+      lines.append(f"- Ticket #{t['id']} ({t['player']}) : non conforme après essais.")
+  else:
+    lines.append("Aucun ticket en échec technique.")
+
+  with open(filepath, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines) + "\n")
+
+
 def show_dashboard(results: list) -> None:
   print("\n--- TABLEAU DE BORD ---")
   active = [r for r in results if r["analysis"]["status"] in ("processed", "to_check", "duplicate")]
@@ -135,6 +180,8 @@ def show_dashboard(results: list) -> None:
 def main():
   tickets_path = BASE_DIR / "tickets.json"
   output_path = BASE_DIR / "results.json"
+  report_path = BASE_DIR / "report.md"
+
   tickets = load_tickets(tickets_path)
   results = []
   seen = {}
@@ -179,7 +226,10 @@ def main():
   with open(output_path, "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
 
+  generate_report(results, report_path)
+
   print(f"\nRésultats exportés dans {output_path.name}")
+  print(f"Rapport managérial généré dans {report_path.name}")
   show_dashboard(results)
 
 
